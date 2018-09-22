@@ -35,7 +35,7 @@ $(function() {
             //iterates over allFeeds array
             for(let feed of allFeeds) {
                 expect(feed.url).not.toBeUndefined();
-                expect(feed.url).toMatch('http');
+                expect(feed.url.trim().length).not.toBe(0);
             }
         });
 
@@ -47,6 +47,7 @@ $(function() {
             //iterates over allFeeds array.
             for(let feed of allFeeds) {
                 expect(feed.name).not.toBeUndefined();
+                expect(feed.name.trim().length).not.toBe(0);//trim is used for checking against only whitespaces
             }
          });
     });
