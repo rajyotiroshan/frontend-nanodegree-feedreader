@@ -35,6 +35,7 @@ $(function() {
             //iterates over allFeeds array
             for(let feed of allFeeds) {
                 expect(feed.url).not.toBeUndefined();
+                expect(feed.url).toMatch('http');
             }
         });
 
