@@ -31,10 +31,11 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-        it('allFeeds objects have url defined and is not empty' , function(){
+        it('objects have url defined and is not empty' , function(){
             //iterates over allFeeds array
             for(let feed of allFeeds) {
                 expect(feed.url).not.toBeUndefined();
+                //trim is used for checking against only whitespaces case
                 expect(feed.url.trim().length).not.toBe(0);
             }
         });
@@ -43,7 +44,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('allFeeds object have name defined and is not empty' , function() {
+        it('object have name defined and is not empty' , function() {
             //iterates over allFeeds array.
             for(let feed of allFeeds) {
                 expect(feed.name).not.toBeUndefined();
@@ -54,19 +55,38 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
+    describe(' The menu ', function() {
+        let body, spyEvent;
+        beforeEach( function() {
+            body = document.querySelector("body");
+        });
 
-        /* TODO: Write a test that ensures the menu element is
+         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-
-         /* TODO: Write a test that ensures the menu changes
+        it('is hidden by default', function() { 
+            expect(body.hasAttribute("class")).toBe(true);
+        //body must have menu-hidden as a class memeber by default.
+            expect(body.classList.contains("menu-hidden")).toBe(true);
+        });
+        
+        /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
 
+          it(' changes visibility when the menu icon is clicked. ', function() {
+            spyEvent = spyOnEvent('a.menu-icon-link', ' click ');
+            $('a.menu-icon-link').trigger(' click ');
+            expect('click').toHaveBeenTriggeredOn('a.menu-icon-link ');
+            expect(spyEvent).toHaveBeenTriggered();
+            //first time click will remove menu-hidden as a class member from body.
+            expect(body.classList.contains("menu-hidden")).toBe(false);
+          });
+    });   
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
