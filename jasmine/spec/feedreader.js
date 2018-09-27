@@ -77,15 +77,6 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-
-          it(' changes visibility when the menu icon is clicked. ', function() {
-            spyEvent = spyOnEvent('a.menu-icon-link', ' click ');
-            $('a.menu-icon-link').trigger(' click ');
-            expect('click').toHaveBeenTriggeredOn('a.menu-icon-link ');
-            expect(spyEvent).toHaveBeenTriggered();
-            //first time click will remove menu-hidden as a class member from body.
-            expect(body.classList.contains("menu-hidden")).toBe(false);
-          });
     });   
     /* TODO: Write a new test suite named "Initial Entries" */
 
