@@ -107,9 +107,39 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe(' New Feed Selection ' , function(){
+        //let originalTimeout;
+        let feedLength = allFeeds.length;
+        console.log(feedLength);
+        let cHeaderTitle,pHeadertitle;
+            
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         //make sure that loadfeed() executed completely before any spec(it block) execution.
+        beforeEach(function(done) {
+           loadFeed(0,function(){
+            pHeadertitle = $('h1.header-title')[0].textContent;
+            console.log('pHeadertitle = ' + pHeadertitle);
+            loadFeed(3,function(){
+                cHeaderTitle = $('h1.header-title')[0].textContent;
+                console.log('cHeadertitle = ' +cHeaderTitle);
+                done();
+            });
+            
+           });
+           }); 
+        //test for new feed loaded from new url.
+        it(' loaded new url. ' ,function(done) {
+            console.log('inside it');
+
+            console.log('pHeaderTitle = ' + pHeadertitle + "\n" + 'cHeaderTitle = ' + cHeaderTitle);
+            
+            expect(pHeadertitle !== cHeaderTitle).toBe(true);
+            done();
+            
+        });
+        //
+    });
 }());
