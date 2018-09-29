@@ -56,7 +56,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe(' The menu ', function() {
-        let body, spyEvent;
+        let body;
         beforeEach( function() {
             body = document.querySelector("body");
         });
