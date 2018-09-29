@@ -119,6 +119,10 @@ $(function() {
         console.log('pFeedID = '+ pFeedID);
         while(pFeedID === (cFeedID = Math.floor(Math.random() * feedLength)));
         console.log('cFeedID = ' + cFeedID);
+        cURL = allFeeds[cFeedID].url.trim();
+        pURL = allFeeds[pFeedID].url.trim();
+        console.log('cURL = ' + cURL);
+        console.log('pURL = ' + pURL);
         originalTimeout =jasmine.DEFAULT_TIMEOUT_INTERVAL;
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
         /* TODO: Write a test that ensures when a new feed is loaded
