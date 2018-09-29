@@ -84,7 +84,10 @@ $(function() {
             expect(body.classList.contains("menu-hidden")).toBe(true);
           });
     });   
+    
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe(' Initial Entries ', function() {
+        //let originalTimeout;
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -92,6 +95,16 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         //make sure that loadfeed() is completed before 'it'.
+         beforeEach(function(done){
+            loadFeed(0,done);
+         });
+
+         it('there is at least a single .entry element within the .feed container. ' , function (done) {
+            expect($('.feed .entry').length).toBeGreaterThan(0);
+            done();
+        });
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
