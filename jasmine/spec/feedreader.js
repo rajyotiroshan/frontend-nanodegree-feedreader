@@ -136,10 +136,14 @@ $(function() {
             //console.log('originalTimeout = ' + originalTimeout);
             loadFeed(pFeedID,function(){
                 pHeadertitle = $('h1.header-title')[0].textContent;
+                pHTML = $('div.feed').html().trim();
+                console.log('pHTML = ' + pHTML);
                 console.log('pHeadertitle = ' + pHeadertitle);
                 loadFeed(cFeedID,function(){
                     cHeaderTitle = $('h1.header-title')[0].textContent;
+                    cHTML = $('div.feed').html().trim();
                     console.log('cHeadertitle = ' + cHeaderTitle);
+                    console.log('cHTML = ' + cHTML);
                     done();
                 });
             });
@@ -153,7 +157,7 @@ $(function() {
             expect(pURL !== cURL).toBe(true);
             //test for diffrent header title for two different feed load.
             expect(pHeadertitle !== cHeaderTitle).toBe(true);
-            //
+            //test for different HTML content. 
             done();
             
         });
