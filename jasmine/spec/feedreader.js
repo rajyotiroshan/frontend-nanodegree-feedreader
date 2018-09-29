@@ -112,7 +112,8 @@ $(function() {
         let feedLength = allFeeds.length;
         console.log(feedLength);
         let cHeaderTitle,pHeadertitle,pFeedID,cFeedID;
-            
+        pFeedID = Math.floor(Math.random() * feedLength);
+        console.log('pFeedID = '+ pFeedID);
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
