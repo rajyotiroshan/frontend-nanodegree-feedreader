@@ -111,7 +111,10 @@ $(function() {
         let originalTimeout;
         let feedLength = allFeeds.length;
         console.log('feedLength = ' + feedLength);
-        let cHeaderTitle,pHeadertitle,pFeedID,cFeedID;
+        let cURL,pURL,
+            cHeaderTitle,pHeadertitle,
+            cFeedID,pFeedID,
+            cHTML,pHTML;
         pFeedID = Math.floor(Math.random() * feedLength);
         console.log('pFeedID = '+ pFeedID);
         while(pFeedID === (cFeedID = Math.floor(Math.random() * feedLength)));
@@ -139,7 +142,7 @@ $(function() {
         }); 
         
         //test for new feed loaded from new url.
-        it(' loaded new url. ' ,function(done) {
+        it(' everytime loaded new url.\n  ' ,function(done) {
             console.log('inside it');
             console.log('pHeaderTitle = ' + pHeadertitle + "\n" + 'cHeaderTitle = ' + cHeaderTitle);
             //
