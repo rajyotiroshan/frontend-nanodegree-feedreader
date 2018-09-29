@@ -146,10 +146,12 @@ $(function() {
         }); 
         
         //test for new feed loaded from new url.
-        it(' everytime loaded new url.\n  ' ,function(done) {
+        it(' everytime loaded new url,\n have new header title ' ,function(done) {
             console.log('inside it');
             console.log('pHeaderTitle = ' + pHeadertitle + "\n" + 'cHeaderTitle = ' + cHeaderTitle);
-            //
+            //test for two diffrent loaded url
+            expect(pURL !== cURL).toBe(true);
+            //test for diffrent header title for two different feed load.
             expect(pHeadertitle !== cHeaderTitle).toBe(true);
             //
             done();
