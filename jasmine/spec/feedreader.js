@@ -108,7 +108,6 @@ $(function() {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe(' New Feed Selection ' , function(){
-        let originalTimeout;
         let feedLength = allFeeds.length;
         console.log('feedLength = ' + feedLength);
         let cHeaderTitle,pHeadertitle,pFeedID,cFeedID;
@@ -116,6 +115,7 @@ $(function() {
         console.log('pFeedID = '+ pFeedID);
         while(pFeedID === (cFeedID = Math.floor(Math.random() * feedLength)));
         console.log('cFeedID = ' + cFeedID);
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -125,7 +125,6 @@ $(function() {
         beforeEach(function(done) {
             //originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
             //console.log('originalTimeout = ' + originalTimeout);
-            //jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
             loadFeed(pFeedID,function(){
                 pHeadertitle = $('h1.header-title')[0].textContent;
                 console.log('pHeadertitle = ' + pHeadertitle);
@@ -146,11 +145,6 @@ $(function() {
             //
             done();
             
-        });
-        
-        //
-        afterEach(function(){
-            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
         });
     });
 }());
