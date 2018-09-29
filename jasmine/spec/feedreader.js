@@ -111,7 +111,7 @@ $(function() {
         //let originalTimeout;
         let feedLength = allFeeds.length;
         console.log(feedLength);
-        let cHeaderTitle,pHeadertitle;
+        let cHeaderTitle,pHeadertitle,pFeedID,cFeedID;
             
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
