@@ -34,9 +34,11 @@ $(function() {
         it('objects have url defined and is not empty' , function(){
             //iterates over allFeeds array
             for(let feed of allFeeds) {
-                expect(feed.url).not.toBeUndefined();
+                /*expect(feed.url).not.toBeUndefined();
                 //trim is used for checking against only whitespaces case
-                expect(feed.url.trim().length).not.toBe(0);
+                expect(feed.url.trim().length).not.toBe(0);*/
+                expect(feed.url).toBeTruthy();
+
             }
         });
 
