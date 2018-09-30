@@ -34,11 +34,12 @@ $(function() {
         it('objects have url defined and is not empty' , function(){
             //iterates over allFeeds array
             for(let feed of allFeeds) {
-                /*expect(feed.url).not.toBeUndefined();
+                expect(feed.url).not.toBeUndefined();
                 //trim is used for checking against only whitespaces case
-                expect(feed.url.trim().length).not.toBe(0);*/
+                expect(feed.url.trim().length).not.toBe(0);
+                /* //from previous review :: told to use ,but not worked ?? but i think it should.
                 expect(feed.url).toBeTruthy();
-
+                */
             }
         });
 
@@ -69,9 +70,16 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('is hidden by default', function() { 
+            /*
             expect(body.hasAttribute("class")).toBe(true);
-        //body must have menu-hidden as a class memeber by default.
+            //body must have menu-hidden as a class memeber by default.
             expect(body.classList.contains("menu-hidden")).toBe(true);
+            */
+            /*// from previous review :: told to use hasClass() and 
+            //it won't break code if new class is added later on to body class.how?? 
+            //it is including both my above commented expect that i understand.*/
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+            
         });
         
         /* TODO: Write a test that ensures the menu changes
@@ -102,15 +110,18 @@ $(function() {
             loadFeed(0,done);
          });
 
-         it('there is at least a single .entry element within the .feed container. ' , function (done) {
+         it('there is at least a single .entry element within the .feed container. ' , function () {
             expect($('.feed .entry').length).toBeGreaterThan(0);
+            /*from prevoius review: no need to use done().as there is no async func here.and i undertstood it.
             done();
+            */
         });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe(' New Feed Selection ' , function(){
-        let originalTimeout;
+        let stateOne, stateTwo;
+        /*let originalTimeout;
         let feedLength = allFeeds.length;
         console.log('feedLength = ' + feedLength);
         let cURL,pURL,
@@ -125,8 +136,10 @@ $(function() {
         pURL = allFeeds[pFeedID].url.trim();
         console.log('cURL = ' + cURL);
         console.log('pURL = ' + pURL);
+        */
         originalTimeout =jasmine.DEFAULT_TIMEOUT_INTERVAL;
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -134,9 +147,7 @@ $(function() {
         
         //make sure that loadfeed() executed completely before any spec(it block) execution.
         beforeEach(function(done) {
-            //originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-            //console.log('originalTimeout = ' + originalTimeout);
-            loadFeed(pFeedID,function(){
+          /*  loadFeed(pFeedID,function(){
                 pHeadertitle = $('h1.header-title')[0].textContent;
                 pHTML = $('div.feed').html().trim();
                 console.log('pHTML = ' + pHTML);
@@ -149,11 +160,26 @@ $(function() {
                     done();
                 });
             });
+            */
+            /*from previous review:more simple and less redundant.No need to check for all feed.*/
+            loadFeed(0, function(){
+                //first load completed.
+                //store html content.
+                stateOne = $('div.feed').html();
+                //start new load.
+                loadFeed(1,function(){
+                    //2nd load completed.
+                    //store html content
+                    stateTwo = $('div.feed').html();
+                    //send framework signal that async call is completed
+                    done();
+                });
+            })
         }); 
         
         //test for new feed loaded from new url.
-        it(' everytime loaded new url, have new header title and new HTML content.' ,function(done) {
-            console.log('inside it');
+        it(' everytime loaded new url, have new header title and new HTML content.' ,function() {
+            /*console.log('inside it');
             console.log('pHeaderTitle = ' + pHeadertitle + "\n" + 'cHeaderTitle = ' + cHeaderTitle);
             //test for two diffrent loaded url
             expect(pURL !== cURL).toBe(true);
@@ -162,6 +188,9 @@ $(function() {
             //test for different HTML content. 
             expect(pURL !== cURL).toBe(true);
             done();
+            */
+            //test for both state.
+            expect(stateOne !== stateTwo).toBe(true);
             
         });
         //
