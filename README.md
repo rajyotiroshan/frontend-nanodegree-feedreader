@@ -46,3 +46,22 @@ Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/pr
 19. Implement error handling for undefined variables and out-of-bound array access.
 20. When complete - all of your tests should pass. 
 21. Write a README file detailing all steps required to successfully run the application. If you have added additional tests (for Udacious Test Coverage),  provide documentation for what these future features are and what the tests are checking for.
+
+# steps to run this application
+
+1. clone or download the project.
+	to download---> click on right hand side green dropdown button (clone or download). click on (download ZIP).
+	to clone -----> run $git clone https://github.com/rajyotiroshan/frontend-nanodegree-feedreader.git 'optional::name-whatever-you-prefer' in your cli
+2. if downloaded ,unzip and open index.html in your prefered browser.
+3. if cloned, just open index.html in your prefered browser.
+4. scroll down you will see output for testing following jasmin style.
+
+#Extras: 
+
+1. code for testing is written in ./jasmine/spec/feedreader.js file.
+2. Almost for every spec i have written two logic.Both are working successfully. One is commented so you can uncomment it and comment the other one. I have included some logged statements(for the current commented logic) so you can uncomment it and open devTools, observe the logged messages and understood some more about testing code written in ./jasmine/spec/feedreader.js file.
+
+# what this testing does??
+
+it uses jasmine framework for unit testing. It tests working of every indivisual function declared and defined in app.js file.
+Every test for function is independent of one another. 

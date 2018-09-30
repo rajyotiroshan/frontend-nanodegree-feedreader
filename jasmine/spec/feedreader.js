@@ -137,6 +137,8 @@ $(function() {
         console.log('cURL = ' + cURL);
         console.log('pURL = ' + pURL);
         */
+        //do not uncomment below two statements to see above commented logic work.
+        // used if by any chance jasmine takes more than 5s to load 
         originalTimeout =jasmine.DEFAULT_TIMEOUT_INTERVAL;
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
